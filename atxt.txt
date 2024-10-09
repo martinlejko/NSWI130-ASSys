@@ -1,0 +1,43 @@
+as a student, I want to enroll to subject because I want to get credits -
+
+as a study department, I want to check prerequisites in order to let eligible people enroll -
+
+as a student, I want to sign off the subject, because I do not have time for it -
+
+as a teacher, I want to be able to add students to my course, because the student may not be able to as capacity is full -
+
+as a teacher, I want to send email to whole group, because I want to inform my students
+
+as a manager, I want to generate statistical reports, because I want to see success rates of the subject in time
+
+as a teacher, I want to be able to remove students from my course, because the capacity might have decreased
+
+as a teacher, I want to be able to move student to my course, because the student might want to change lecture time
+
+
+breakdown 1
+
+student opens dashboard
+student selects subject enrollment button
+student filters out desired subject
+student selects desired subject and clicks enroll button
+system checks prerequisities and capacity
+if the subject capacity is full, student is not allowed to enroll
+if the check is successful, student is informed about success and is enrolled to subject
+
+breakdown 2
+
+
+
+breakdown 3
+
+
+student opens dashboard
+student selects his schedule
+student selects desired subject
+student see the subject page
+student selects sign off subject
+system checks if student can sign off
+if yes the sign off is successful, student is informed about this action
+if no student can not sing off the subject
+student can inform teacher about his situation and teacher can sing off the student
