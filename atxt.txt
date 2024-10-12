@@ -14,6 +14,11 @@ as a teacher, I want to be able to remove students from my course, because the c
 
 as a teacher, I want to be able to move student to my course, because the student might want to change lecture time
 
+as a student, I want to view my enrolled subjects, because I need to keep track of my academic progress and ensure Im meeting my degree requirements
+
+as a student, I want to view the course syllabus and schedule for each subject, because I want to understand the course content and plan my study schedule accordingly
+
+
 
 breakdown 1
 
@@ -41,3 +46,15 @@ system checks if student can sign off
 if yes the sign off is successful, student is informed about this action
 if no student can not sing off the subject
 student can inform teacher about his situation and teacher can sing off the student
+
+breakdown 4: Viewing Enrolled Subjects
+
+student opens dashboard.
+student selects the "My Enrollments" button.
+system displays a list of all enrolled subjects.
+student can filter or search through the subjects if needed.
+for each subject, student can see atleast:
+    subject name
+    credit hours
+    current status (active, completed, withdrawn)
+student can click on a subject to view more details, including course syllabus and grades (if available).
