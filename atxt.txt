@@ -55,6 +55,6 @@ system displays a list of all enrolled subjects.
 student can filter or search through the subjects if needed.
 for each subject, student can see atleast:
     subject name
-    credit hours
+    credits
     current status (active, completed, withdrawn)
 student can click on a subject to view more details, including course syllabus and grades (if available).
