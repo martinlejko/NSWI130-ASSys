@@ -18,6 +18,10 @@ as a student, I want to view my enrolled subjects, because I need to keep track 
 
 as a student, I want to view the course syllabus and schedule for each subject, because I want to understand the course content and plan my study schedule accordingly
 
+as a student, I want to see the capacity of the subject, because I want to know if there is still space available for enrollment
+
+as a student, I want to join a waiting list if the capacity is full for the course I want to enroll in, because I still want a chance to get into the course if space becomes available
+
 
 
 breakdown 1
@@ -32,9 +36,20 @@ if the check is successful, student is informed about success and is enrolled to
 
 breakdown 2
 
-
-
 breakdown 3
+
+**breakdown: Joining a Waiting List for a Full Course**
+
+- Student opens dashboard.
+- Student selects the "Subject Enrollment" button.
+- Student filters or searches for the desired subject.
+- Student selects the desired subject and clicks the "Enroll" button.
+- System checks prerequisites and the capacity of the subject.
+- If the subject capacity is full, system displays a notification informing the student.
+- Student is given the option to join a waiting list for the subject.
+- Student confirms they want to join the waiting list.
+- System adds the student to the waiting list and informs them of their position in the queue.
+- If space becomes available, system notifies the student that they are enrolled.
 
 
 student opens dashboard
