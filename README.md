@@ -7,3 +7,4 @@ Team project for the NSWI130 course at MFF UK.
     - Matus Klecka
     - Samuel Koribanic
     - Daniel Lopata
+    - David Petera
