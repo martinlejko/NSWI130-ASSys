@@ -1,26 +1,26 @@
-as a student, I want to enroll to subject because I want to get credits -
+1. as a student, I want to enroll to subject because I want to get credits -
 
-as a study department, I want to check prerequisites in order to let eligible people enroll -
+2. as a study department, I want to check prerequisites in order to let eligible people enroll -
 
-as a student, I want to sign off the subject, because I do not have time for it -
+3. as a student, I want to sign off the subject, because I do not have time for it -
 
-as a teacher, I want to be able to add students to my course, because the student may not be able to as capacity is full -
+4. as a teacher, I want to be able to add students to my course, because the student may not be able to as capacity is full -
 
-as a teacher, I want to send email to whole group, because I want to inform my students
+5. as a teacher, I want to send email to whole group, because I want to inform my students
 
-as a manager, I want to generate statistical reports, because I want to see success rates of the subject in time
+6. as a manager, I want to generate statistical reports, because I want to see success rates of the subject in time
 
-as a teacher, I want to be able to remove students from my course, because the capacity might have decreased
+7. as a teacher, I want to be able to remove students from my course, because the capacity might have decreased
 
-as a teacher, I want to be able to move student to my course, because the student might want to change lecture time
+8. as a teacher, I want to be able to move student to my course, because the student might want to change lecture time
 
-as a student, I want to view my enrolled subjects, because I need to keep track of my academic progress and ensure Im meeting my degree requirements
+9. as a student, I want to view my enrolled subjects, because I need to keep track of my academic progress and ensure Im meeting my degree requirements
 
-as a student, I want to view the course syllabus and schedule for each subject, because I want to understand the course content and plan my study schedule accordingly
+10. as a student, I want to view the course syllabus and schedule for each subject, because I want to understand the course content and plan my study schedule accordingly
 
-as a student, I want to see the capacity of the subject, because I want to know if there is still space available for enrollment
+11. as a student, I want to see the capacity of the subject, because I want to know if there is still space available for enrollment
 
-as a student, I want to join a waiting list if the capacity is full for the course I want to enroll in, because I still want a chance to get into the course if space becomes available
+12. as a student, I want to join a waiting list if the capacity is full for the course I want to enroll in, because I still want a chance to get into the course if space becomes available
 
 
 
@@ -62,6 +62,7 @@ if yes the sign off is successful, student is informed about this action
 if no student can not sing off the subject
 student can inform teacher about his situation and teacher can sing off the student
 
+
 breakdown 4: Viewing Enrolled Subjects
 
 student opens dashboard.
@@ -73,3 +74,16 @@ for each subject, student can see atleast:
     credits
     current status (active, completed, withdrawn)
 student can click on a subject to view more details, including course syllabus and grades (if available).
+
+
+breakdown 5: emailing students
+
+teacher opens dashboard
+teacher selects the "My Subjects" section
+system shows list of subjects that the teacher teaches or empty list
+teacher selects the appropriate subject
+system shows more detailed info panel about the subject
+teacher clicks on the "Message enrolled students" button
+system shows two editable text areas, one for subject other for the content, and a "Send" button
+teacher fills the areas with appropriate text and clicks the "Send" button
+system shows confirmation toast that the message has been sent
