@@ -87,3 +87,14 @@ teacher clicks on the "Message enrolled students" button
 system shows two editable text areas, one for subject other for the content, and a "Send" button
 teacher fills the areas with appropriate text and clicks the "Send" button
 system shows confirmation toast that the message has been sent
+
+breakdown 6: Generating Statistical Reports for Subject Success Rates
+
+manager logs into the system dashboard.
+manager navigates to the "Reports" or "Analytics" section.
+system displays various report options.
+manager selects "Subject Success Rates" report.
+system prompts for report parameters (time period, subjects).
+manager sets desired parameters and clicks "Generate Report."
+system generates and displays the statistical report.
+manager reviews the report and has options to download, print, or share it.
