@@ -169,6 +169,27 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
             autolayout lr
         }
 
+        dynamic enr_system "ViewEnrolledSubjects" {
+            description "The sequence of actions for a student viewing their enrolled subjects."
+        
+            student -> webApp "Opens the dashboard"
+            student -> webApp "Selects the 'My Enrollments' button"
+            webApp -> enrollmentManager "Requests list of enrolled subjects"
+            enrollmentManager -> enrollment_database "Fetches enrolled subjects for the student"
+            enrollment_database -> enrollmentManager "Returns enrolled subjects data"
+            enrollmentManager -> webApp "Provides list of enrolled subjects"
+            webApp -> student "Displays enrolled subjects with filters and search options"
+            
+            student -> webApp "Filters or searches through enrolled subjects (optional)"
+            student -> webApp "Selects a subject for details"
+            webApp -> enrollmentManager "Requests detailed information for selected subject"
+            enrollmentManager -> enrollment_database "Retrieves syllabus and grade details if available"
+            enrollment_database -> enrollmentManager "Returns detailed subject information"
+            enrollmentManager -> webApp "Displays subject details, including syllabus and grades"
+            
+            autolayout lr
+        }
+
         theme default
 
         styles {
