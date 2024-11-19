@@ -1,7 +1,7 @@
 workspace "ENR System Workspace" "This workspace documents the architecture of the Enrollment (ENR) system." {
 
     model {
-        usr_login_system = softwareSystem "User Logins (USRLOG)" "Handels authentification of the users." "Existing Systems"
+        usr_login_system = softwareSystem "User Logins (USRLOG)" "Handles authentication of the users." "Existing Systems"
     
         enr_system = softwareSystem "Enrollments (ENR)" "Handles student enrollments and communications." {
             webApp = container "Web Application" "Interface for stakeholders to access ENR functionalities" "Web Front-End" {
@@ -84,7 +84,7 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
         }
         
         deploymentEnvironment "Testing" {
-            test_user = deploymentNode deploymentNode "User's Device" "Device used by the student" "Web Browser" {
+            test_user = deploymentNode "User's Device" "Device used by the student" "Web Browser" {
                 test_webApp = containerInstance webApp
             }
             
@@ -210,6 +210,29 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
             autolayout lr
         }
 
+        dynamic statisticsManager "GeneratingStatisticalReports" {
+            description "The sequence of actions within the Statistics Manager for generating statistical reports on subject success rates over time."
+        
+            report_controller -> reportRepository "Fetches report configurations and available reports"
+            reportRepository -> log_database "Retrieves historical data for reports"
+            log_database -> reportRepository "Returns historical data"
+            reportRepository -> report_controller "Returns report data"
+            report_controller -> webApp "Sends the generated report"
+        
+            autolayout lr
+        }
+
+
+        dynamic statisticsManager "StatisticsManager_ComponentInteractions" {
+            description "The sequence of actions within the Statistics Manager for generating statistical reports."
+
+            report_controller -> reportRepository "Fetches and stores report configurations and results"
+            reportRepository -> log_database "Retrieves historical data for reports"
+            reportRepository -> report_controller "Returns report data"
+
+            autolayout lr
+        }
+
         theme default
 
         styles {
@@ -225,4 +248,4 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
             }
         }
     }
-} 
+}
