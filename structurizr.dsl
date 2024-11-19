@@ -6,66 +6,48 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
                 userInterface = component "User Interface" "Provides interface for user interactions"
             }
 
-            group "Controllers" {
-                studentController = container "Student Controller" "Handles requests related to student profiles"
-                teacherController = container "Teacher Controller" "Handles requests related to teacher interactions"
-                departmentController = container "Department Controller" "Handles requests related to department tasks"
-                reportController = container "Report Controller" "Handles requests for generating statistical reports"
+            statisticsManager = container "Statistics Manager" "Generates and works with course statistics" {
+                report_controller = component "Report Controller" "Handles requests for generating statistical reports" 
+                log_database = component "Statistics Log Database" "Stores statistics of courses based on historical data" "SQL" "Database" 
+                reportRepository = component "Report Repository" "Stores report configurations and results"
             }
             
-            group "Managers" {
-                enrollment_manager = container "Enrollment Manager" "Processes enrollment requests and interactions with the database" {
-                    prerequisitesValidator = component "Prerequisites Validator" "Validates prerequisites of the students wanting to enroll in a course"
-                }
-                
-                statistics_manager = container "Statistics Manager" "Generates and works with course statistics" {
-                    reportGenerator = component "Report Generator" "Creates statistical reports for analysis and audits"
-                }
-                
-                notification_manager = container "Notification Manager" "Notifies students enrolled in courses"
-            }
-            
-            group "Repositories" {
-                enrollmentRepository = container "Enrollment Repository" "Stores and retrieves enrollment data"
-                reportRepository = container "Report Repository" "Stores report configurations and results"
-            }
-            
-            group "Persistence Layer" {
-                enrollment_database = container "Enrollment Database" "Stores information about courses and enrollments" "SQL" "Database" {
-                    enrollmentTable = component "Enrollment Table" "Stores data on enrolled students and their course information"
-                    courseTable = component "Course Table" "Stores information about available courses"
-                    studentTable = component "Student Table" "Stores personal details and academic information for students"
-                }
-                
-                log_database = container "Statistics Log Database" "Stores statistics of courses based on historical data" "SQL" "Database" {
-                    statisticsTable = component "Course Statistics Table" "Stores statistics of courses"
-                }
-            }
 
-            userInterface -> studentController "Submits student-related requests to"
-            userInterface -> teacherController "Submits teacher-related requests to"
-            userInterface -> departmentController "Submits department-related requests to"
-            userInterface -> reportController "Requests reports from"
-
-            studentController -> enrollment_manager "Forwards student enroll requests to"
-            teacherController -> enrollment_manager "Forwards teacher enroll requests to"
-            departmentController -> enrollment_manager "Forwards department requests to"
-            reportController -> statistics_manager "Requests reports from"
+            enrollmentManager = container "Enrollment Manager" "Manages the enrollment logic" {
+                student_controller = component "Student Controller" "Handles requests related to student profiles"
+                teacher_controller = component "Teacher Controller" "Handles requests related to teacher interactions"
+                department_controller = component "Department Controller" "Handles requests related to department tasks"
+                
+                enrollment_processor = component "Enrollment Processor" "Processes enrollment requests and interactions with the database"
+                notification_manager = component "Notification Manager" "Notifies students enrolled in courses"
+                enrollment_repository = component "Enrollment Repository" "Stores and retrieves enrollment data"
+                enrollment_database = component "Enrollment Database" "Stores information about courses and enrollments" "SQL" "Database" 
+            }
             
-            studentController -> enrollment_manager "Uses for enrollment logic"
-            teacherController -> enrollment_manager "Uses for enrollment operations"
-            departmentController -> enrollment_manager "Uses for enrollment operations"
-            teacherController -> notification_manager "Uses for notifications to students"
-            departmentController -> notification_manager "Uses for notifications to students"
-            reportController -> statistics_manager "Uses for report generation"
+            
 
-            enrollmentRepository -> enrollment_database "Reads from and writes to"
+
+            userInterface -> student_controller "Submits student-related requests to"
+            userInterface -> teacher_controller "Submits teacher-related requests to"
+            userInterface -> department_controller "Submits department-related requests to"
+            userInterface -> report_controller "Requests reports from"
+
+            student_controller -> enrollment_processor "Forwards student enroll requests to"
+            teacher_controller -> enrollment_processor "Forwards teacher enroll requests to"
+            department_controller -> enrollment_processor "Forwards department requests to"
+            //reportController -> statistics_manager "Requests reports from"
+            
+            teacher_controller -> notification_manager "Uses for notifications to students"
+            department_controller -> notification_manager "Uses for notifications to students"
+            //reportController -> statistics_manager "Uses for report generation"
+
+            enrollment_repository -> enrollment_database "Reads from and writes to"
             reportRepository -> log_database "Communicates with"
 
-            notification_manager -> enrollmentRepository "Gets enrolled student information"
-            enrollment_manager -> enrollmentRepository "Reads and writes enrollment data"
-            statistics_manager -> enrollmentRepository "Reads from"
-            statistics_manager -> reportRepository "Writes to"
+            notification_manager -> enrollment_repository "Gets enrolled student information"
+            enrollment_processor -> enrollment_repository "Reads and writes enrollment data"
+            report_controller -> enrollment_repository "Reads from"
+            report_controller -> reportRepository "Writes to"
         }
 
         student = person "Student" "Enrolled in courses and communicates with study department."
@@ -88,15 +70,7 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
             include *
         }
 
-        component enrollment_manager "enrollment_manager_component_diagram" {
-            include *
-        }
-
-        component statistics_manager "statistics_manager_component_diagram" {
-            include *
-        }
-
-        component notification_manager "notification_manager_component_diagram" {
+        component enrollmentManager "enrollmentManager_component_diagram" {
             include *
         }
 
@@ -104,35 +78,7 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
             include *
         }
 
-        component studentController "studentController_component_diagram" {
-            include *
-        }
-
-        component teacherController "teacherController_component_diagram" {
-            include *
-        }
-
-        component departmentController "departmentController_component_diagram" {
-            include *
-        }
-
-        component reportController "reportController_component_diagram" {
-            include *
-        }
-
-        component enrollmentRepository "enrollmentRepository_component_diagram" {
-            include *
-        }
-
-        component reportRepository "reportRepository_component_diagram" {
-            include *
-        }
-
-        component enrollment_database "enrollment_database_component_diagram" {
-            include *
-        }
-
-        component log_database "log_database_component_diagram" {
+        component statisticsManager "statisticsManager_component_diagram" {
             include *
         }
 
