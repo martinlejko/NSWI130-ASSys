@@ -1,6 +1,8 @@
 workspace "ENR System Workspace" "This workspace documents the architecture of the Enrollment (ENR) system." {
 
     model {
+        usr_login_system = softwareSystem "User Logins (USRLOG)" "Handels authentification of the users." "Existing Systems"
+    
         enr_system = softwareSystem "Enrollments (ENR)" "Handles student enrollments and communications." {
             webApp = container "Web Application" "Interface for stakeholders to access ENR functionalities" "Web Front-End" {
                 userInterface = component "User Interface" "Provides interface for user interactions"
@@ -8,9 +10,10 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
 
             statisticsManager = container "Statistics Manager" "Generates and works with course statistics" {
                 report_controller = component "Report Controller" "Handles requests for generating statistical reports" 
-                log_database = component "Statistics Log Database" "Stores statistics of courses based on historical data" "SQL" "Database" 
                 reportRepository = component "Report Repository" "Stores report configurations and results"
             }
+            
+            log_database = container "Statistics Log Database" "Stores statistics of courses based on historical data" "SQL" "Database"
             
 
             enrollmentManager = container "Enrollment Manager" "Manages the enrollment logic" {
@@ -21,11 +24,9 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
                 enrollment_processor = component "Enrollment Processor" "Processes enrollment requests and interactions with the database"
                 notification_manager = component "Notification Manager" "Notifies students enrolled in courses"
                 enrollment_repository = component "Enrollment Repository" "Stores and retrieves enrollment data"
-                enrollment_database = component "Enrollment Database" "Stores information about courses and enrollments" "SQL" "Database" 
             }
             
-            
-
+            enrollment_database = container "Enrollment Database" "Stores information about courses and enrollments" "SQL" "Database" 
 
             userInterface -> student_controller "Submits student-related requests to"
             userInterface -> teacher_controller "Submits teacher-related requests to"
@@ -59,6 +60,46 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
         teacher -> webApp "Accesses for managing student enrollments"
         study_department_officer -> webApp "Accesses for record verification"
         manager -> webApp "Generates reports"
+        
+        enr_system -> usr_login_system "Uses for user login"
+        webApp -> usr_login_system "Authenticates users with"
+        
+        deploymentEnvironment "Production" {
+            prod_user = deploymentNode "User's Device" "Device used by the student" "Web Browser" {
+                prod_webApp = containerInstance webApp
+            }
+
+            prod_cloud = deploymentNode "Cloud Hosting Environment" "Cloud infrastructure hosting the application" "AWS" {
+                prod_statisticsManager = deploymentNode "Statistics Manager Server" "Processes course statistics" "EC2 Instance" {
+                    prod_statisticsManager_instance = containerInstance statisticsManager
+                }
+                prod_enrollmentManager = deploymentNode "Enrollment Manager Server" "Handles enrollment operations" "EC2 Instance" {
+                    prod_enrollmentManager_instance = containerInstance enrollmentManager
+                }
+                prod_database = deploymentNode "Database Server" "Hosts the databases" "RDS Instance" {
+                    prod_enrollmentDatabase = containerInstance enrollment_database
+                    prod_logDatabase = containerInstance log_database
+                }
+            }
+        }
+        
+        deploymentEnvironment "Testing" {
+            test_user = deploymentNode deploymentNode "User's Device" "Device used by the student" "Web Browser" {
+                test_webApp = containerInstance webApp
+            }
+            
+            test_statisticsManager = deploymentNode "Statistics Manager Server" "Processes course statistics" "Ubuntu 18.04 LTS" {
+                test_statisticsManager_instance = containerInstance statisticsManager
+            }
+            test_enrollmentManager = deploymentNode "Enrollment Manager Server" "Handles enrollment operations" "Ubuntu 18.04 LTS" {
+                test_enrollmentManager_instance = containerInstance enrollmentManager
+            }
+            test_database = deploymentNode "Database Server" "Hosts the databases" "Elasticsearch 8.14" {
+                test_enrollmentDatabase = containerInstance enrollment_database
+                test_logDatabase = containerInstance log_database
+            }
+        }
+        
     }
 
     views {
@@ -81,6 +122,36 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
         component statisticsManager "statisticsManager_component_diagram" {
             include *
         }
+        
+        deployment enr_system "Production" "Production_Deployment" {
+            include *
+        }
+        
+        deployment enr_system "Testing" "Testing_Deployment" {
+            include *
+        }
+        
+        
+        dynamic enr_system "WaitingListProcess" {
+            description "The sequence of actions for a student joining a waiting list for a full course."
+        
+            student -> webApp "Opens the dashboard"
+            student -> webApp "Selects subject enrollment button"
+            student -> webApp "Filters desired subject"
+            student -> webApp "Selects subject and clicks enroll"
+            webApp -> enrollmentManager "Checks prerequisites and capacity"
+            enrollmentManager -> webApp "Returns full capacity status"
+            webApp -> student "Displays full capacity notification"
+            student -> webApp "Chooses to join waiting list"
+            webApp -> enrollmentManager "Requests waiting list addition"
+            enrollmentManager -> enrollment_database "Updates waiting list"
+            enrollmentManager -> webApp "Returns queue position"
+            webApp -> student "Shows waiting list confirmation"
+            enrollmentManager -> webApp "Sends availability notification"
+            webApp -> student "Notifies of available spot"
+        
+            autolayout lr
+        }
 
         theme default
 
@@ -91,6 +162,10 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
             element "Database" {
                 shape Cylinder
             }
+            element "Existing Systems" {
+                background #999999
+                color #ffffff
+            }
         }
     }
-}
+} 
