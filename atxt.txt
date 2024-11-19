@@ -36,6 +36,17 @@ if the check is successful, student is informed about success and is enrolled to
 
 breakdown 2
 
+student opens dashboard
+student selects his schedule
+student selects desired subject
+student see the subject page
+student selects sign off subject
+system checks if student can sign off
+if yes the sign off is successful, student is informed about this action
+if no student can not sing off the subject
+student can inform teacher about his situation and teacher can sing off the student
+
+
 breakdown 3
 
 **breakdown: Joining a Waiting List for a Full Course**
@@ -50,17 +61,6 @@ breakdown 3
 - Student confirms they want to join the waiting list.
 - System adds the student to the waiting list and informs them of their position in the queue.
 - If space becomes available, system notifies the student that they are enrolled.
-
-
-student opens dashboard
-student selects his schedule
-student selects desired subject
-student see the subject page
-student selects sign off subject
-system checks if student can sign off
-if yes the sign off is successful, student is informed about this action
-if no student can not sing off the subject
-student can inform teacher about his situation and teacher can sing off the student
 
 
 breakdown 4: Viewing Enrolled Subjects
