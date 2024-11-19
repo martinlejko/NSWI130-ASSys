@@ -152,6 +152,22 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
         
             autolayout lr
         }
+        
+        dynamic enr_system "StudentEnrollmentProcess" {
+            description "The sequence of actions for a student enrolling in a subject."
+        
+            student -> webApp "Opens the dashboard"
+            student -> webApp "Selects subject enrollment button"
+            student -> webApp "Filters desired subject"
+            student -> webApp "Selects subject and clicks enroll"
+            webApp -> enrollmentManager "Checks prerequisites and capacity"
+            enrollmentManager -> enrollment_database "Verifies subject capacity and prerequisites"
+            enrollmentManager -> webApp "Returns enrollment success or failure status"
+        
+            webApp -> student "Notifies about success and enrollment confirmation or failure"
+        
+            autolayout lr
+        }
 
         theme default
 
