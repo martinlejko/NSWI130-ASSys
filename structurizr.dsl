@@ -190,6 +190,26 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
             autolayout lr
         }
 
+        dynamic enr_system "EmailingStudents" {
+            description "The sequence of action of a teacher that wants to send email to whole group of enrolled students."
+            
+            teacher -> webApp "Teacher opens the dashboard"
+            teacher -> webApp "Teacher selects the 'My Subjects' section"
+            webApp -> enrollmentManager "Backend gets the data from the database"
+            webApp -> teacher "System shows list of subjects that the teacher teaches or empty list"
+            // if "List of subject not empty" 
+            teacher -> webApp "Teacher selects the appropriate subject"
+            webApp -> teacher "System shows more detailed info panel about the subject"
+            teacher -> webApp "Teacher clicks on the 'Message enrolled students' button"
+            webApp -> teacher "System shows two editable text areas, one for subject other for the content, and a 'Send' button"
+            teacher -> webApp "Teacher fills the areas with appropriate text and clicks the 'Send' button"
+            webApp -> enrollmentManager "Sends the data to the backend"
+            webApp -> student "Sends email to the students"
+            webApp -> teacher "System shows confirmation toast that the message has been sent"
+            
+            autolayout lr
+        }
+
         theme default
 
         styles {
