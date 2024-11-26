@@ -61,23 +61,25 @@ As a student, I want to sign off the subject, because I do not have time for it.
 #### Responsibilities
 
 
-### Feature 4: Student viewing Enrolled Subjects
+### Feature 4: Student Viewing Enrolled Subjects (Samo)
+**User Story:** As a student, I want to view my enrolled subjects to track my academic progress.
 
-As a student, I want to view my enrolled subjects, because I need to keep track of my academic progress and ensure Im meeting my degree requirements.
-
-#### Breakdown
-
-- Student opens dashboard.
-- Student selects the "My Enrollments" button.
-- System displays a list of all enrolled subjects.
-- Student can filter or search through the subjects if needed.
-- For each subject, student can see atleast:
-  - Subject name
-  - Credits
-  - Current status (active, completed, withdrawn)
-- Student can click on a subject to view more details, including course syllabus and grades (if available).
+#### User-System Interaction Breakdown
+1. Student opens the dashboard.
+2. Student clicks the "My Enrollments" button.
+3. System displays a list of enrolled subjects with details (name, credits, status).
+4. Student can filter and search for specific subjects or view more detailed information.
+5. Student can display their results of the subject (grades, credit)
 
 #### Responsibilities
+##### System Presentation: 
+  - Display a list of enrolled subjects
+  - Display additional information of subjects
+  - Display the results of the subject
+
+##### Enrollment Processing:
+  - Provide search and filtering functionalities.
+
 
 ### Feature 5: Teacher notifying enrolled students
 
