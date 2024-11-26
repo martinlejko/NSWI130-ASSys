@@ -6,6 +6,14 @@ The system is designed to manage student enrollments, including signing up for c
 
 ## Core features and responsibilities
 
+- Feature 1: Student Enrolling in a Subject (Daniel Lopata)
+- Feature 2: Study department checking prerequisites (Adam Budai)
+- Feature 3: Student signing off from a subject (David Petera)
+- Feature 4: Student Viewing Enrolled Subjects (Samo)
+- Feature 5: Teacher notifying enrolled students (David Petera)
+- Feature 6: Generating Statistical Reports for Subject Success Rates (Matúš Klečka)
+- Feature 7: Joining a Waiting List for a Full Course (Martin Lejko)
+
 ### Feature 1: Student Enrolling in a Subject (Daniel Lopata)
 
 **User Story:**  
@@ -66,7 +74,7 @@ As a study department, I want to check prerequisites in order to let eligible pe
 #### Responsibilities
 
 
-### Feature 3: Student signing off from a subject
+### Feature 3: Student signing off from a subject (David Petera)
 
 As a student, I want to sign off the subject, because I do not have time for it.
 
@@ -88,6 +96,22 @@ As a student, I want to sign off the subject, because I do not have time for it.
 - Student is informed about the successful sign-off
 
 #### Responsibilities
+
+##### System presentation responsibilities
+
+- Displaying enrolled subjects
+- Showing reasons for not allowing sign-off
+- Informing student about sucessful sign-off
+
+##### Validation responsibilities
+
+- Checking eligibility for sign-off
+
+##### Enrollment processing responsibilities
+
+- Removing subject from enrolled subjects
+- Updating capacity of the subjects
+- Updating student's academic progress
 
 
 ### Feature 4: Student Viewing Enrolled Subjects (Samo)
