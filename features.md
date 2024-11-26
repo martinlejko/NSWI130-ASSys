@@ -97,7 +97,7 @@ As a teacher, I want to send messages to whole group, because I want to give stu
 
 #### Responsibilities
 
-### Feature 6: Generating Statistical Reports for Subject Success Rates
+### Feature 6: Generating Statistical Reports for Subject Success Rates (Matúš Klečka)
 
 As a manager, I want to generate statistical reports, because I want to see success rates of the subject in time.
 
