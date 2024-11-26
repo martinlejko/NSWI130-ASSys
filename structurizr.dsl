@@ -22,6 +22,8 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
                 department_controller = component "Department Controller" "Handles requests related to department tasks"
                 
                 enrollment_processor = component "Enrollment Processor" "Processes enrollment requests and interactions with the database"
+                prerequisites_validator = component "Prerquisites Validator" "Validated if subject prerequisites have been met"
+                enrollment_viewer = component "Enrollment Viewer" "Handels basic viewing of the enrolled subjects"
                 notification_manager = component "Notification Manager" "Notifies students enrolled in courses"
                 enrollment_repository = component "Enrollment Repository" "Stores and retrieves enrollment data"
             }
@@ -34,21 +36,26 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
             userInterface -> report_controller "Requests reports from"
 
             student_controller -> enrollment_processor "Forwards student enroll requests to"
+            student_controller -> enrollment_viewer "Forwards students request for already enrolled subjects"
             teacher_controller -> enrollment_processor "Forwards teacher enroll requests to"
             department_controller -> enrollment_processor "Forwards department requests to"
-            //reportController -> statistics_manager "Requests reports from"
             
             teacher_controller -> notification_manager "Uses for notifications to students"
             department_controller -> notification_manager "Uses for notifications to students"
-            //reportController -> statistics_manager "Uses for report generation"
+            department_controller -> prerequisites_validator "Requests validation of student prerequisites"
+            
 
             enrollment_repository -> enrollment_database "Reads from and writes to"
             reportRepository -> log_database "Communicates with"
-
+            
+            enrollment_viewer -> enrollment_repository "Gets enrollment data"
             notification_manager -> enrollment_repository "Gets enrolled student information"
             enrollment_processor -> enrollment_repository "Reads and writes enrollment data"
+            prerequisites_validator -> enrollment_repository "Reads enrollment data"
             report_controller -> enrollment_repository "Reads from"
             report_controller -> reportRepository "Writes to"
+            
+            enrollmentManager -> webApp "Notifies enrolled students on teacher request"
         }
 
         student = person "Student" "Enrolled in courses and communicates with study department."
@@ -105,30 +112,37 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
     views {
         systemContext enr_system "enr_system_context_diagram" {
             include *
+            autolayout tb
         }
 
         container enr_system "enr_system_container_diagram" {
             include *
+
         }
 
         component enrollmentManager "enrollmentManager_component_diagram" {
             include *
+            autolayout tb
         }
 
         component webApp "webApp_component_diagram" {
             include *
+            autolayout tb
         }
 
         component statisticsManager "statisticsManager_component_diagram" {
             include *
+            autolayout tb
         }
         
         deployment enr_system "Production" "Production_Deployment" {
             include *
+            autolayout tb
         }
         
         deployment enr_system "Testing" "Testing_Deployment" {
             include *
+            autolayout tb
         }
         
         
@@ -150,7 +164,7 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
             enrollmentManager -> webApp "Sends availability notification"
             webApp -> student "Notifies of available spot"
         
-            autolayout lr
+            autolayout tb
         }
         
         dynamic enr_system "StudentEnrollmentProcess" {
@@ -166,7 +180,7 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
         
             webApp -> student "Notifies about success and enrollment confirmation or failure"
         
-            autolayout lr
+            autolayout tb
         }
 
         dynamic enr_system "ViewEnrolledSubjects" {
@@ -187,7 +201,7 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
             enrollment_database -> enrollmentManager "Returns detailed subject information"
             enrollmentManager -> webApp "Displays subject details, including syllabus and grades"
             
-            autolayout lr
+            autolayout tb
         }
 
         dynamic enr_system "EmailingStudents" {
@@ -207,7 +221,7 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
             webApp -> student "Sends email to the students"
             webApp -> teacher "System shows confirmation toast that the message has been sent"
             
-            autolayout lr
+            autolayout tb
         }
 
         dynamic statisticsManager "GeneratingStatisticalReports" {
@@ -219,7 +233,7 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
             reportRepository -> report_controller "Returns report data"
             report_controller -> webApp "Sends the generated report"
         
-            autolayout lr
+            autolayout tb
         }
 
 
@@ -230,7 +244,7 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
             reportRepository -> log_database "Retrieves historical data for reports"
             reportRepository -> report_controller "Returns report data"
 
-            autolayout lr
+            autolayout tb
         }
 
         theme default
