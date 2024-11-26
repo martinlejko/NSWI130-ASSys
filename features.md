@@ -116,6 +116,21 @@ As a manager, I want to generate statistical reports, because I want to see succ
 
 #### Responsibilities
 
+##### System Presentation Responsibilities
+- Display report parameters (time period, subjects).
+
+##### Enrollments Processing Responsibilities
+- Retrieve and process enrollment data to determine which students have completed the subject.
+- Identify the success criteria for each subject (e.g., passing grades, completion status).
+
+
+##### Data Analysis Responsibilities
+- Filter data based on the selected time period and subjects.
+
+##### Validation Responsibilities
+- Verify that the selected time period and subjects are valid and within the system's stored data range.
+- Validate the generated report's data for consistency and accuracy against the raw input data.
+
 ### Feature 7: Joining a Waiting List for a Full Course (Martin Lejko)
 
 As a student, I want to join a waiting list if the capacity is full for the course I want to enroll in, because I still want a chance to get into the course if space becomes available.
