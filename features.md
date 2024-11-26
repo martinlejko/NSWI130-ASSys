@@ -110,7 +110,7 @@ As a student, I want to view my enrolled subjects to track my academic progress.
   - Provide search and filtering functionalities.
 
 
-### Feature 5: Teacher notifying enrolled students
+### Feature 5: Teacher notifying enrolled students (David Petera)
 
 As a teacher, I want to send messages to whole group, because I want to give students important information.
 
@@ -127,6 +127,17 @@ As a teacher, I want to send messages to whole group, because I want to give stu
 - System shows confirmation toast that the message has been sent and sends the message
 
 #### Responsibilities
+
+##### System presentation responsibilites
+
+- Showing list of subjects
+- Showing detailed info of subjects
+- Messaging students
+- Showing confirmation message
+
+##### Persistance responsibilites
+
+- Saving information about subject
 
 ### Feature 6: Generating Statistical Reports for Subject Success Rates (Matúš Klečka)
 
