@@ -7,12 +7,11 @@ The system is designed to manage student enrollments, including signing up for c
 ## Core features and responsibilities
 
 - Feature 1: Student Enrolling in a Subject (Daniel Lopata)
-- Feature 2: Study department checking prerequisites (Adam Budai)
-- Feature 3: Student signing off from a subject (David Petera)
-- Feature 4: Student Viewing Enrolled Subjects (Samo)
-- Feature 5: Teacher notifying enrolled students (David Petera)
-- Feature 6: Generating Statistical Reports for Subject Success Rates (Matúš Klečka)
-- Feature 7: Joining a Waiting List for a Full Course (Martin Lejko)
+- Feature 2: Student signing off from a subject (Adam Budai)
+- Feature 3: Student Viewing Enrolled Subjects (Samo)
+- Feature 4: Teacher notifying enrolled students (David Petera)
+- Feature 5: Generating Statistical Reports for Subject Success Rates (Matúš Klečka)
+- Feature 6: Joining a Waiting List for a Full Course (Martin Lejko)
 
 ### Feature 1: Student Enrolling in a Subject (Daniel Lopata)
 
@@ -55,26 +54,8 @@ As a student, I want to enrol in a subject because I want to get credits.
 - Maintain records of all enrollments, including timestamps and student IDs.  
 - Ensure that subject capacities are correctly updated after every successful or failed enrollment attempt.
 
-### Feature 2: Study department checking prerequisites
 
-As a study department, I want to check prerequisites in order to let eligible people enroll.
-
-#### Breakdown
-
-- Student opens dashboard
-- Student selects his schedule
-- Student selects desired subject
-- Student see the subject page
-- Student selects sign off subject
-- System checks if student can sign off
-- If yes the sign off is successful, student is informed about this action
-- If no student can not sing off the subject
-- Student can inform teacher about his situation and teacher can sing off the student
-
-#### Responsibilities
-
-
-### Feature 3: Student signing off from a subject (David Petera)
+### Feature 2: Student signing off from a subject (David Petera)
 
 As a student, I want to sign off the subject, because I do not have time for it.
 
@@ -114,7 +95,7 @@ As a student, I want to sign off the subject, because I do not have time for it.
 - Updating student's academic progress
 
 
-### Feature 4: Student Viewing Enrolled Subjects (Samo)
+### Feature 3: Student Viewing Enrolled Subjects (Samo)
 As a student, I want to view my enrolled subjects to track my academic progress.
 
 #### User-System Interaction Breakdown
@@ -134,7 +115,7 @@ As a student, I want to view my enrolled subjects to track my academic progress.
   - Provide search and filtering functionalities.
 
 
-### Feature 5: Teacher notifying enrolled students (David Petera)
+### Feature 4: Teacher notifying enrolled students (David Petera)
 
 As a teacher, I want to send messages to whole group, because I want to give students important information.
 
@@ -163,7 +144,7 @@ As a teacher, I want to send messages to whole group, because I want to give stu
 
 - Saving information about subject
 
-### Feature 6: Generating Statistical Reports for Subject Success Rates (Matúš Klečka)
+### Feature 5: Generating Statistical Reports for Subject Success Rates (Matúš Klečka)
 
 As a manager, I want to generate statistical reports, because I want to see success rates of the subject in time.
 
@@ -195,7 +176,7 @@ As a manager, I want to generate statistical reports, because I want to see succ
 - Verify that the selected time period and subjects are valid and within the system's stored data range.
 - Validate the generated report's data for consistency and accuracy against the raw input data.
 
-### Feature 7: Joining a Waiting List for a Full Course (Martin Lejko)
+### Feature 6: Joining a Waiting List for a Full Course (Martin Lejko)
 
 As a student, I want to join a waiting list if the capacity is full for the course I want to enroll in, because I still want a chance to get into the course if space becomes available.
 
