@@ -1,6 +1,6 @@
 # Enrollments
 
-(Martin Lejko, Samuel Koribanič, Daniel Lopata, David Petera, Matúš Klečka, Adam Budai)
+(Samuel Koribanič, Daniel Lopata, David Petera, Martin Lejko, Matúš Klečka, Adam Budai)
 
 The system is designed to manage student enrollments, including signing up for courses, viewing enrolled subjects, signing off, managing waiting lists, and other related administrative tasks. It enables easy communication between students, teachers, and administrative departments.
 
