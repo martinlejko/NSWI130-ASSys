@@ -145,7 +145,7 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
             autolayout tb
         }
         
-        
+        //Martin Lejko
         dynamic enr_system "WaitingListProcess" {
             description "The sequence of actions for a student joining a waiting list for a full course."
         
@@ -166,7 +166,7 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
         
             autolayout tb
         }
-        
+        //Daniel Lopata
         dynamic enr_system "StudentEnrollmentProcess" {
             description "The sequence of actions for a student enrolling in a subject."
         
@@ -182,7 +182,7 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
         
             autolayout tb
         }
-
+        // Samuel Koribanic
         dynamic enr_system "ViewEnrolledSubjects" {
             description "The sequence of actions for a student viewing their enrolled subjects."
         
@@ -203,7 +203,7 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
             
             autolayout tb
         }
-
+        //David Petera
         dynamic enr_system "EmailingStudents" {
             description "The sequence of action of a teacher that wants to send email to whole group of enrolled students."
             
@@ -223,7 +223,7 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
             
             autolayout tb
         }
-
+        //Matus Klecka
         dynamic statisticsManager "GeneratingStatisticalReports" {
             description "The sequence of actions within the Statistics Manager for generating statistical reports on subject success rates over time."
         
@@ -236,7 +236,7 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
             autolayout tb
         }
 
-
+        // Adam Budai
         dynamic statisticsManager "StatisticsManager_ComponentInteractions" {
             description "The sequence of actions within the Statistics Manager for generating statistical reports."
 
