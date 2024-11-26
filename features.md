@@ -62,7 +62,7 @@ As a student, I want to sign off the subject, because I do not have time for it.
 
 
 ### Feature 4: Student Viewing Enrolled Subjects (Samo)
-**User Story:** As a student, I want to view my enrolled subjects to track my academic progress.
+As a student, I want to view my enrolled subjects to track my academic progress.
 
 #### User-System Interaction Breakdown
 1. Student opens the dashboard.
