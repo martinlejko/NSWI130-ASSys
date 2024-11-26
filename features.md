@@ -1,22 +1,51 @@
 # Enrollments
 
+(Martin Lejko, Samuel Koribanič, Daniel Lopata, David Petera, Matúš Klečka, Adam Budai)
+
+The system is designed to manage student enrollments, including signing up for courses, viewing enrolled subjects, signing off, managing waiting lists, and other related administrative tasks. It enables easy communication between students, teachers, and administrative departments.
+
 ## Core features and responsibilities
 
-### Feature 1: Student enrolling to a subject
+### Feature 1: Student Enrolling in a Subject (Daniel Lopata)
 
-As a student, I want to enroll to subject because I want to get credits.
+**User Story:**  
+As a student, I want to enrol in a subject because I want to get credits.  
 
-#### Breakdown
+#### Breakdown  
 
-- Student opens dashboard
-- Student selects subject enrollment button
-- Student filters out desired subject
-- Student selects desired subject and clicks enroll button
-- System checks prerequisities and capacity
-- If the subject capacity is full, student is not allowed to enroll
-- If the check is successful, student is informed about success and is enrolled to subject
+1. The student opens the dashboard.  
+2. The student selects the subject enrollment button.  
+3. The student filters out the desired subject.  
+4. The student selects the desired subject and clicks the enrol button.  
+5. System checks prerequisites and capacity.  
+6. If the subject's capacity is full, the student is not allowed to enrol and is informed.  
+7. If the check is successful, the student is informed about the success and is enrolled in the subject.  
 
-#### Responsibilities
+#### Responsibilities  
+
+##### **System Presentation**  
+- Display available subjects with relevant details.  
+- Allow filtering and searching for subjects by various criteria.  
+- Show feedback for successful or failed enrollment attempts.  
+
+##### **Enrollments Processing**  
+- Process enrollment requests by interacting with other modules.  
+- Update the subject's enrollment records upon successful enrollment.  
+- Handle enrollment state transitions, such as full capacity or pending prerequisites.  
+
+##### **Data Analysis Responsibilities**  
+- Track subject capacity in real-time to ensure accurate availability of information.  
+- Analyze and manage enrollments to provide information to system administrators.  
+
+##### **Validation Responsibilities**  
+- Verify that the student meets all prerequisites for the selected subject.  
+- Check if there is sufficient capacity in the subject before enrolling the student.  
+- Provide clear error messages and reasons for denied enrollment requests.  
+
+##### **Persistence Responsibilities**  
+- Store updated enrollment data in the database.  
+- Maintain records of all enrollments, including timestamps and student IDs.  
+- Ensure that subject capacities are correctly updated after every successful or failed enrollment attempt.
 
 ### Feature 2: Study department checking prerequisites
 
