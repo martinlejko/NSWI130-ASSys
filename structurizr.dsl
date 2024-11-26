@@ -147,7 +147,7 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
         
         //Martin Lejko
         dynamic enr_system "WaitingListProcess" {
-            description "The sequence of actions for a student joining a waiting list for a full course."
+            description "(Martin Lejko) The sequence of actions for a student joining a waiting list for a full course."
         
             student -> webApp "Opens the dashboard"
             student -> webApp "Selects subject enrollment button"
@@ -168,7 +168,7 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
         }
         //Daniel Lopata
         dynamic enr_system "StudentEnrollmentProcess" {
-            description "The sequence of actions for a student enrolling in a subject."
+            description "(Daniel Lopata) The sequence of actions for a student enrolling in a subject."
         
             student -> webApp "Opens the dashboard"
             student -> webApp "Selects subject enrollment button"
@@ -184,7 +184,7 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
         }
         // Samuel Koribanic
         dynamic enr_system "ViewEnrolledSubjects" {
-            description "The sequence of actions for a student viewing their enrolled subjects."
+            description "(Samuel Koribanic) The sequence of actions for a student viewing their enrolled subjects."
         
             student -> webApp "Opens the dashboard"
             student -> webApp "Selects the 'My Enrollments' button"
@@ -205,7 +205,7 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
         }
         //David Petera
         dynamic enr_system "EmailingStudents" {
-            description "The sequence of action of a teacher that wants to send email to whole group of enrolled students."
+            description "(David Petera) The sequence of action of a teacher that wants to send email to whole group of enrolled students."
             
             teacher -> webApp "Teacher opens the dashboard"
             teacher -> webApp "Teacher selects the 'My Subjects' section"
@@ -225,7 +225,7 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
         }
         //Matus Klecka
         dynamic statisticsManager "GeneratingStatisticalReports" {
-            description "The sequence of actions within the Statistics Manager for generating statistical reports on subject success rates over time."
+            description "(Matus Klecka) The sequence of actions within the Statistics Manager for generating statistical reports on subject success rates over time."
         
             report_controller -> reportRepository "Fetches report configurations and available reports"
             reportRepository -> log_database "Retrieves historical data for reports"
@@ -238,7 +238,7 @@ workspace "ENR System Workspace" "This workspace documents the architecture of t
 
         // Adam Budai
         dynamic statisticsManager "StatisticsManager_ComponentInteractions" {
-            description "The sequence of actions within the Statistics Manager for generating statistical reports."
+            description "(Adam Budai) The sequence of actions within the Statistics Manager for generating statistical reports."
 
             report_controller -> reportRepository "Fetches and stores report configurations and results"
             reportRepository -> log_database "Retrieves historical data for reports"
