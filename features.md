@@ -133,3 +133,27 @@ As a student, I want to join a waiting list if the capacity is full for the cour
 
 #### Responsibilities
 
+##### System Presentation:
+
+* Provide a clear and intuitive user interface for viewing waiting list options  
+* Display real-time information about waiting list status  
+* Create seamless navigation for waiting list management  
+
+##### Enrollment Processing:
+
+* Automatically process waiting list when course spaces become available  
+* Efficiently transfer students from waiting list to course enrollment  
+* Maintain real-time synchronization of waiting list status  
+
+##### Data Analysis:
+
+* Track waiting list occupancy rates  
+* Provide insights for future course capacity planning  
+
+##### Validation:
+
+* Verify student eligibility for joining a waiting list  
+* Check student's academic standing and prerequisites   
+* Prevent duplicate waiting list entries for the same subject   
+
+
