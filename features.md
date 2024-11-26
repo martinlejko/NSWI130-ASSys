@@ -114,7 +114,7 @@ As a manager, I want to generate statistical reports, because I want to see succ
 
 #### Responsibilities
 
-### Feature 7: Joining a Waiting List for a Full Course
+### Feature 7: Joining a Waiting List for a Full Course (Martin Lejko)
 
 As a student, I want to join a waiting list if the capacity is full for the course I want to enroll in, because I still want a chance to get into the course if space becomes available.
 
