@@ -55,7 +55,7 @@ As a student, I want to enrol in a subject because I want to get credits.
 - Ensure that subject capacities are correctly updated after every successful or failed enrollment attempt.
 
 
-### Feature 2: Student signing off from a subject (David Petera)
+### Feature 2: Student signing off from a subject (Adam Budai)
 
 As a student, I want to sign off the subject, because I do not have time for it.
 
