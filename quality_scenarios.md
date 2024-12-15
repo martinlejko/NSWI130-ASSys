@@ -16,7 +16,7 @@ Integrate a **Load Balancer** to distribute incoming requests evenly across mult
 
 #### **Measure:**  
 The system maintains:  
-- An **average response time** of less than **3 seconds** for all users, even during peak traffic.  
+- An **average response time** of less than **2 seconds** for all users, even during peak traffic.  
 - The ability to handle **200% of the typical request volume** without failures.
 
 ## Scalability Scenario 2
