@@ -25,7 +25,7 @@ The system maintains:
 **System**
 
 #### **Stimulus:**  
-A large number of users (teachers, students, and committee members) access the system simultaneously during peak times, such as the release of new schedules or significant updates. The synchronous architecture of the system leads to performance bottlenecks and slower response times as requests are processed sequentially.
+A large number of users access the system simultaneously during peak times, such as the release of new schedules or significant updates. The synchronous architecture of the system leads to performance bottlenecks and slower response times as requests are processed sequentially.
 
 #### **Artifact (Environment):**  
 **Scheduling System Backend**
