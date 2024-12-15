@@ -56,3 +56,17 @@ Add a Bulk Update Component to the Courses logic, ensuring clear separation of c
 New bulk update functionality is added with no regression issues in existing features.
 Development time for future updates is reduced by 20% due to modular design.
 
+## Runtime 1
+#### **Source:**   
+Scheduling System Backend
+#### **Stimulus:** 
+During the generation of schedules, repeated algorithm requests cause high latency because the system recalculates results unnecessarily. This happens when the same input data is processed multiple times.
+#### **Artifact (Environment):** 
+Scheduling System Backend – Algorithm Cache
+#### **Response:** 
+Implement a Caching Strategy to store and reuse generated schedules for identical input requests. The system checks the cache before running the scheduling algorithm.
+#### **Measure:** 
+Reduce algorithm computation time by 50% for duplicate or recurring schedule generation requests.
+Cache hit ratio achieves at least 80% during peak load.
+
+
