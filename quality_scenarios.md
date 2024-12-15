@@ -37,3 +37,17 @@ Redesign the backend architecture to be **asynchronous**. By leveraging asynchro
 The system maintains:  
 - An **average response time** of less than **2 seconds** for all users, even during peak traffic.  
 - The ability to handle **300% of the typical request volume** without failures or degradation in performance.  
+
+## Modifiability scenario 1
+
+#### **Source:**   
+- Developer
+#### **Stimulus:** 
+- New requirements arise to enable bulk updates for course schedules. The current system design does not support adding new features without impacting existing components.
+#### **Artifact (Environment):**
+Scheduling System Backend – Courses Component
+Response: Add a Bulk Update Component to the Courses logic, ensuring clear separation of concerns. This new component will handle bulk update requests while existing functionality remains unchanged.
+Measure:
+New bulk update functionality is added with no regression issues in existing features.
+Development time for future updates is reduced by 20% due to modular design.
+
