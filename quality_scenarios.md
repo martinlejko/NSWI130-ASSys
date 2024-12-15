@@ -41,9 +41,11 @@ The system maintains:
 ## Modifiability scenario 1
 
 #### **Source:**   
-- Developer
+Developer
+
 #### **Stimulus:** 
-- New requirements arise to enable bulk updates for course schedules. The current system design does not support adding new features without impacting existing components.
+New requirements arise to enable bulk updates for course schedules. The current system design does not support adding new features without impacting existing components.
+
 #### **Artifact (Environment):**
 Scheduling System Backend – Courses Component
 
