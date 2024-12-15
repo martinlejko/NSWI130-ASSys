@@ -46,8 +46,11 @@ The system maintains:
 - New requirements arise to enable bulk updates for course schedules. The current system design does not support adding new features without impacting existing components.
 #### **Artifact (Environment):**
 Scheduling System Backend – Courses Component
-Response: Add a Bulk Update Component to the Courses logic, ensuring clear separation of concerns. This new component will handle bulk update requests while existing functionality remains unchanged.
-Measure:
+
+#### **Response:**  
+Add a Bulk Update Component to the Courses logic, ensuring clear separation of concerns. This new component will handle bulk update requests while existing functionality remains unchanged.
+
+#### **Measure:** 
 New bulk update functionality is added with no regression issues in existing features.
 Development time for future updates is reduced by 20% due to modular design.
 
