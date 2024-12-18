@@ -208,7 +208,7 @@ Repeat and possibly Log.
 #### **Measure:**
 2s of Downtime
 
-### Performance Scenario (Samuel Koribanic)
+## Performance Scenario (Samuel Koribanic)
 
 #### **Source:**  
 **System**  
@@ -228,7 +228,7 @@ Refactor the scheduling algorithm to use **parallel processing** and divide larg
 
 ---
 
-### Usability Scenario (Samuel Koribanic)
+## Usability Scenario (Samuel Koribanic)
 
 #### **Source:**  
 **End User (Student/Teacher)**  
