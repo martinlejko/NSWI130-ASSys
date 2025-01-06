@@ -29,21 +29,27 @@ To address this limitation, the system needs to integrate both a Load Balancer a
 ## Scalability Scenario 2
 
 #### **Source:**  
-**System**
+Users
 
 #### **Stimulus:**  
 A large number of users access the system simultaneously during peak times, such as the release of new schedules or significant updates. The synchronous architecture of the system leads to performance bottlenecks and slower response times as requests are processed sequentially.
 
 #### **Artifact (Environment):**  
-**Scheduling System Backend**
+Scheduling System Backend
 
-#### **Response:**  
-Redesign the backend architecture to be **asynchronous**. By leveraging asynchronous processing and non-blocking I/O operations, the system can handle multiple requests concurrently. Tasks such as database queries and external API calls are decoupled, ensuring that the system efficiently utilizes server resources without being blocked by slower operations.
+#### **Response:** 
+When the scheduling system operates correctly, it efficiently handles a large number of simultaneous users, ensuring that requests are processed in a timely manner. Even during peak traffic times, or big waves of users such as the release of new schedules or updates. With an asynchronous architecture, the system processes multiple requests simultaneously, ensuring that database queries, external API calls, and other tasks do not block the main workflow.
+
+However, the current implementation relies on a synchronous architecture, which processes requests sequentially. This design leads to performance bottlenecks
 
 #### **Measure:**  
 The system maintains:  
 - An **average response time** of less than **2 seconds** for all users, even during peak traffic.  
 - The ability to handle **300% of the typical request volume** without failures or degradation in performance.
+
+### **Solution:**
+To address this issue, the backend architecture should be redesigned to adopt asynchronous processing. By leveraging non-blocking I/O operations, the system can handle multiple requests concurrently.
+This redesign would enable the system to maximize resource utilization and handle higher traffic loads.
 
 ----
 
