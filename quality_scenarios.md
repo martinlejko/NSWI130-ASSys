@@ -21,7 +21,7 @@ The system maintains:
 - An **average response time** of less than **2 seconds** for all users, even during peak traffic.  
 - The ability to handle **200% of the typical request volume** without failures.
 
-### Solution
+### **Solution:**
 To address this limitation, the system needs to integrate both a Load Balancer and additional web servers. The Load Balancer would distribute incoming traffic evenly across multiple servers. Enabling the system to process requests in parallel. This architecture would prevent any single server from being overwhelmed.
 
 ----
