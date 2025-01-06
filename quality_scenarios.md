@@ -3,21 +3,26 @@
 ## Scalability Scenario
 
 #### **Source:**  
-**System**
+Users
 
 #### **Stimulus:**  
 A large number of users access the system simultaneously during peak times, such as the release of new schedules or significant updates. The system operates on a single server, leading to performance bottlenecks and slower response times.
 
 #### **Artifact (Environment):**  
-**Scheduling System Backend**
+Scheduling System Backend
 
 #### **Response:**  
-Integrate a **Load Balancer** to distribute incoming requests evenly across multiple instances of the backend. If multiple servers are not available, the Load Balancer ensures that the single server processes requests sequentially and efficiently, reducing the likelihood of crashes or overload.
+When the scheduling system operates correctly, it efficiently handles a large number of simultaneous users, ensuring that requests are processed in a timely manner. Even during peak traffic times, or big waves of users such as the release of new schedules or updates. This ideal scenario allows all users to access the system without delays or interruptions.
+
+However, the current implementation struggles to handle peak traffic due to performance bottlenecks caused by operating on a single server. During these times, response times increase, and the likelihood of server overload or failure rises.
 
 #### **Measure:**  
 The system maintains:  
 - An **average response time** of less than **2 seconds** for all users, even during peak traffic.  
 - The ability to handle **200% of the typical request volume** without failures.
+
+### Solution
+To address this limitation, the system needs to integrate both a Load Balancer and additional web servers. The Load Balancer would distribute incoming traffic evenly across multiple servers. Enabling the system to process requests in parallel. This architecture would prevent any single server from being overwhelmed.
 
 ----
 
