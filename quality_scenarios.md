@@ -219,42 +219,44 @@ Repeat and possibly Log.
 #### **Measure:**
 2s of Downtime
 
-## Performance Scenario (Samuel Koribanic)
+----
+
+## Performance Scenario - Run-Time (Samuel Koribanic)
 
 #### **Source:**  
-**System**  
+**System / Large Dataset**  
 
 #### **Stimulus:**  
-The scheduling algorithm takes too long to process schedules for large institutions with thousands of courses and students, leading to unacceptable delays during schedule generation.  
+The schedule displaying takes unacceptable time to show a lot of elements, especially for schedules containing a lot of entries (i.e when displaying schedule for whole semester).
 
 #### **Artifact (Environment):**  
-**Scheduling Algorithm Backend**  
+**Scheduling Backend**  
 
 #### **Response:**  
-Refactor the scheduling algorithm to use **parallel processing** and divide large scheduling tasks into smaller, independent sub-tasks that can run concurrently. Utilize a distributed computing framework to execute the tasks across multiple servers or cores.  
+System is optimized to handle large datasets and searches for entries effectively, reducing the time taken to display schedules.
 
 #### **Measure:**  
-- Schedule generation time is reduced by **70%** for datasets with more than 10,000 entries.  
-- The system processes at least **5,000 concurrent scheduling requests** without degradation in performance.  
+- Schedule displaying time is reduced by atleast **70%** for datasets with more than 1,000 entries.  
+- The system processes at least **100 concurrent scheduling requests** without any noticable degradation in performance.  
 
----
+----
 
-## Usability Scenario (Samuel Koribanic)
+## Security Scenario - Run-time (Samuel Koribanic)
 
 #### **Source:**  
-**End User (Student/Teacher)**  
+**System**
 
 #### **Stimulus:**  
-Users struggle to navigate the scheduling interface, reporting confusion when attempting to perform basic tasks such as viewing or modifying their schedules.  
+User cannot access schedules of other students that did not share their schedules.
 
 #### **Artifact (Environment):**  
-**Scheduling System Frontend**  
+**Scheduling Backend**
 
 #### **Response:**  
-Redesign the user interface to follow **intuitive design principles** and conduct usability testing with diverse user groups. Implement clear instructions, tooltips, and error messages. Add a guided onboarding process for first-time users to familiarize them with key features.  
+System is updated to ensure that only schedules shared by students are accessible to other students.
 
 #### **Measure:**  
-- **90% of users** complete key tasks (e.g., viewing a schedule, updating preferences) without external assistance.  
-- Average task completion time is reduced by **30%**.  
-- User satisfaction score increases to at least **4.5 out of 5** in post-task surveys.  
+- Unauthorized access to schedules is reduced to **0%**.
+- All shared schedules are accessible to other students.
+
 
