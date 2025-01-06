@@ -178,19 +178,19 @@ Implement **role-based access control** and secure API endpoints with authentica
 ### **New Frontend for Mobile Application** (David Petera)
 
 #### **Source:**
-**Developer**
+**Users**
 
 #### **Stimulus**
-We want to increase the ease of use of SIS by allowing users to interact with the scheduling process or view the schedule and other information on their phones.
+Users want to increase the ease of use of SIS scheduling process or viewing the schedule and other information on their phones.
 
 #### **Artifact (Environment):** 
-**Frontend, New Mobile Frontend Container**
+**Frontend**
 
 #### **Response:**  
-Add new Mobile Frontend Container. We do not have to modify the backend because the API is already sufficient.
+New mobile frontend is implemented.
 
 #### **Measure:**
-It should be possible to develop the new frontend independently and relatively fast.
+It should be possible to develop the new frontend with minimal backend changes and within 4 man-months of development and testing.
 
 ----
 
