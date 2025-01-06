@@ -42,7 +42,7 @@ The system maintains:
 
 ----
 
-## Modifiability scenario 1
+## Modifiability scenario 1 (Matus Klecka)
 
 #### **Source:**   
 Developer
@@ -62,7 +62,7 @@ Development time for future updates is reduced by 20% due to modular design.
 
 ----
 
-## Runtime 1
+## Runtime 1 (Matus Klecka)
 
 #### **Source:**   
 Scheduling System Backend
