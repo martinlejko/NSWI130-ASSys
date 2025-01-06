@@ -214,7 +214,7 @@ Unable to load data from Database.
 **Database, Normal load Operation**
 
 #### **Response:**  
-Repeat and possibly Log.
+Mask (Repeat) and possibly Log.
 
 #### **Measure:**
 2s of Downtime
