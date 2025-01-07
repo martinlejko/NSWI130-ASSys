@@ -164,7 +164,7 @@ The updated algorithm is integrated and tested with **no more than 3 person-days
 **Schedules Backend**  
 
 #### **Stimulus:**  
-An unauthorized user attempts to access or manipulate scheduling data through API endpoints. The system does not currently have sufficient access controls in place to restrict such attempts.  
+An unauthorized user attempts to access or manipulate scheduling data through API endpoints.
 
 #### **Artifact (Environment):**  
 **Scheduling Backend (Normal operation conditions)**  
@@ -175,7 +175,6 @@ Implement **role-based access control** and secure API endpoints with authentica
 #### **Measure:**  
 - 100% of unauthorized requests are denied access.  
 - All access attempts are logged with response times under **2 seconds**.  
-- Security audit logs are available for review.
 
 ----
 
