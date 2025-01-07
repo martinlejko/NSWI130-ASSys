@@ -93,7 +93,7 @@ Cache hit ratio achieves at least 80% during peak load.
 
 ----
 
-## Testability Scenario: 
+## Testability Scenario (Adam Budai)
 
 #### **Source:**
 Developer/QA Engineer
@@ -111,12 +111,12 @@ Compare generated schedules against expected outcomes using automated validation
 
 #### **Measure:**
 95% of test cases pass without manual intervention.
-Errors identified within 10 minutes of running the automated tests.
+Errors identified within 3 minutes of running the automated tests.
 The scheduling algorithm’s output matches expected results for all predefined edge cases.
 
 ----
 
-## Security Scenario 1
+## Security Scenario 1 (Adam Budai)
 
 #### **Source:**
 Internal Misuse
