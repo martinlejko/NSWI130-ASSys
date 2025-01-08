@@ -123,7 +123,7 @@ It should be possible to develop the new frontend with minimal backend changes a
 ## Modifiability Scenario - Design-time (Daniel Lopata) 
 
 #### **Source:**  
-**Schedules Backend**  
+Developers 
 
 #### **Stimulus:**  
 A new version of the scheduling algorithm needs to be integrated, requiring changes to the API communication. Unclear boundaries between components cause chain effects when modifications are made.  
