@@ -1,6 +1,8 @@
 # Quality Scenarios
 
-## Scalability Scenario
+Team: Samuel Koribanič, Daniel Lopata, David Petera, Martin Lejko, Matúš Klečka, Adam Budai
+
+## Scalability Scenario (Martin Lejko)
 
 #### **Source:**  
 Users
@@ -74,30 +76,28 @@ Compare generated schedules against expected outcomes using automated validation
 Errors identified within 3 minutes of running the automated tests.
 The scheduling algorithm’s output matches expected results for all predefined edge cases.
 
-----
+---
 
-## Security Scenario 1 (Adam Budai)
+## Security Scenario - Run-time (Daniel Lopata)
 
-#### **Source:**
-Internal Misuse
+#### **Source:**  
+**Schedules Backend**  
 
-#### **Stimulus:**
-A teacher or management officer attempts unauthorized modifications to course or schedule data.
+#### **Stimulus:**  
+An unauthorized user attempts to access or manipulate scheduling data through API endpoints.
 
-#### **Artifact (Environment):**
-Scheduling Backend (Normal operation conditions)
+#### **Artifact (Environment):**  
+**Scheduling Backend (Normal operation conditions)**  
 
-#### **Response:**
-Log all actions in the system with detailed metadata (e.g., user ID, timestamp, and action performed).
-Allow admins to review audit logs and revoke access immediately in case of misuse.
-Set granular permissions to ensure each user can only access and modify relevant data.
+#### **Response:**  
+Implement **role-based access control** and secure API endpoints with authentication tokens. Only authorized users with the correct permissions can access or modify scheduling data. Unauthorized access attempts are logged and flagged for review.  
 
-#### **Measure:**
-100% of unauthorized actions flagged and logged.
-The system passes an external security audit for role-based access control.
-All critical actions include a confirmation prompt to prevent accidental misuse.
+#### **Measure:**  
+- 100% of unauthorized requests are denied access.  
+- All access attempts are logged with response times under **2 seconds**.  
 
 ----
+
 
 ## Modifiability - Design-time (David Petera)
 
