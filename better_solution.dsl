@@ -10,12 +10,14 @@ workspace "WED_SCHED2 Workspace" "This workspace documents the architecture of t
                     scheduleViewUI = component "UI for viewing schedules"
                     schedulingPreferencesUI = component "UI for entering scheduling preferences" 
                     coursesUI = component "UI for viewing and changing information about courses"
+                    authUI = component "Authentication UI" "Handles user login and token management"
                 }
             }
         
         commitee_dashboard = container "Commitee Dashboard" "Web user interface for the scheduling commitee " "" "Web Front-End" {
                 group "Presentation Layer"  {
                     schedulingUI = component "User Interface for the scheduling commitee"
+                    commiteeAuthUI = component "Authentication UI" "Handles committee member login and token management"
                 }
             }
             
@@ -30,8 +32,14 @@ workspace "WED_SCHED2 Workspace" "This workspace documents the architecture of t
             }
            
         backend = container "Schedules Backend" "Processes user requests to view schedules and make changes"  {
+                group "Security Layer" {
+                    authService = component "Authentication Service" "Handles user authentication and token management"
+                    rbacService = component "RBAC Service" "Manages role-based access control"
+                    securityLogger = component "Security Logger" "Logs all access attempts and security events"
+                }
+                
                 group "Business Layer"  {
-                    api_gateway = component "API gateway"
+                    api_gateway = component "API gateway" "Validates authentication tokens and enforces RBAC"
                     scheduleViewer = component "Viewer" "Logic for viewing schedules"
                     coursesManager = component "Courses" "Logic for viewing and changing information about courses"
                     schedulingModule = component "Scheduling" "Logic for viewing and making changes in preliminary schedules"
@@ -42,15 +50,29 @@ workspace "WED_SCHED2 Workspace" "This workspace documents the architecture of t
             }
         database = container "Database" "" "" "Database" 
         alg_database = container "Algorithm cache" "" "" "Database"
+        security_database = container "Security Database" "Stores user credentials, roles, permissions, and security logs" "" "Database"
             
         # relationships between containers
-        dashboard -> backend "Makes API calls to"
-        commitee_dashboard -> backend "Makes API calls to"
+        dashboard -> backend "Makes authenticated API calls to"
+        commitee_dashboard -> backend "Makes authenticated API calls to"
         backend -> database "Loads/Stores data"    
-        backend -> schedulingAlg "Sends request to generate a preliminary schedule"    
+        backend -> schedulingAlg "Sends authenticated request to generate a preliminary schedule"    
         schedulingAlg -> alg_database "Caches created schedules"
+        backend -> security_database "Stores security data and logs"
         
         # relationships between components
+        authUI -> api_gateway "Authenticates users"
+        commiteeAuthUI -> api_gateway "Authenticates committee members"
+        
+        api_gateway -> authService "Validates tokens"
+        api_gateway -> rbacService "Checks permissions"
+        authService -> securityLogger "Logs authentication attempts"
+        rbacService -> securityLogger "Logs access control decisions"
+        
+        securityLogger -> security_database "Stores security logs"
+        authService -> security_database "Manages user credentials"
+        rbacService -> security_database "Manages roles and permissions"
+        
         scheduleChangesUI -> api_gateway
         scheduleViewUI -> api_gateway
         schedulingUI -> api_gateway
@@ -63,7 +85,6 @@ workspace "WED_SCHED2 Workspace" "This workspace documents the architecture of t
         api_gateway -> scheduleChangesManager
         api_gateway -> schedulingPreferencesManager
     
-        
         scheduleViewer -> pers_layer
         coursesManager -> pers_layer
         schedulingModule -> pers_layer
@@ -86,29 +107,29 @@ workspace "WED_SCHED2 Workspace" "This workspace documents the architecture of t
         management = person "Management officer" "Can make global changes in schedule, e.g. sports day, or other arbitrary changes."
 
         # relationships between users and the system
-        student -> SIS_schedules "Views their schedule, enters scheduling preferences."
-        teacher -> SIS_schedules "Views schedules, enters changes in their personal schedule."
-        commitee -> SIS_schedules "Generate preliminary schedules using the scheduling algorithm, view and change these schedules."
-        management -> SIS_schedules "View schedules, enter arbitrary changes in schedule."
+        student -> SIS_schedules "Views their schedule, enters scheduling preferences using authentication."
+        teacher -> SIS_schedules "Views schedules, enters changes in their personal schedule using authentication."
+        commitee -> SIS_schedules "Generate preliminary schedules using authentication."
+        management -> SIS_schedules "View schedules, enter arbitrary changes using authentication."
     
-        student -> dashboard "Views their schedule, enters scheduling preferences."
-        teacher -> dashboard "Views schedules, enters changes in their personal schedule."
-        commitee -> commitee_dashboard "Generate preliminary schedules using the scheduling algorithm, view and change these schedules."
-        management -> dashboard "View schedules, enter arbitrary changes in schedule."
+        student -> dashboard "Views their schedule with required authentication."
+        teacher -> dashboard "Views schedules with required authentication."
+        commitee -> commitee_dashboard "Generate schedules with required authentication."
+        management -> dashboard "View schedules with required authentication."
         
         
         production = deploymentEnvironment "Production" {
             deploymentNode "Load Balancer" {
-        deploymentNode "User computer 1" {
-            containerInstance dashboard
-        }
-        deploymentNode "User computer 2" {
-            containerInstance dashboard
-        }
-        deploymentNode "User computer 3" {
-            containerInstance dashboard
-        }
-    }
+                deploymentNode "User computer 1" {
+                    containerInstance dashboard
+                }
+                deploymentNode "User computer 2" {
+                    containerInstance dashboard
+                }
+                deploymentNode "User computer 3" {
+                    containerInstance dashboard
+                }
+            }
 
             deploymentNode "Commitee computer" {
                 containerInstance commitee_dashboard
@@ -122,25 +143,18 @@ workspace "WED_SCHED2 Workspace" "This workspace documents the architecture of t
             }
             deploymentNode "Database server" {
                 containerInstance database
+                containerInstance security_database
             }
-
         }
                 
         development = deploymentEnvironment "Development - Backend" {
             deploymentNode "Developer Machine" {
                 containerInstance backend
                 containerInstance database
+                containerInstance security_database
             }
-/*             deploymentNode "Backend server" {
-                containerInstance backend
-            }
-            deploymentNode "Database server" {
-                containerInstance database
-            } */
-
         }
     }
-    
     
     views {
         deployment * production {
@@ -249,8 +263,6 @@ workspace "WED_SCHED2 Workspace" "This workspace documents the architecture of t
             dashboard -> management "Shows changes"
         }
         
-        
-        
         styles {
             element "Existing System" {
                 background #999999
@@ -266,4 +278,4 @@ workspace "WED_SCHED2 Workspace" "This workspace documents the architecture of t
             }
         }
     }
-}  
+}
