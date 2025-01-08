@@ -1,4 +1,4 @@
-# Quality Scenarios
+# Quality Scenarios for SCH1
 
 Team: Samuel Koribanič, Daniel Lopata, David Petera, Martin Lejko, Matúš Klečka, Adam Budai
 
