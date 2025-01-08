@@ -28,7 +28,7 @@ To address this limitation, the system needs to integrate both a Load Balancer a
 
 ----
 
-## Scalability Scenario 2
+## Scalability Scenario 2 (Matúš Klečka)
 
 #### **Source:**  
 Users
@@ -120,7 +120,7 @@ It should be possible to develop the new frontend with minimal backend changes a
 
 ----
 
-## Modifiability Scenario - Design-time (Daniel Lopata) 
+## Modifiability Scenario - Design-time (Samuel Koribanic) 
 
 #### **Source:**  
 Developers 
